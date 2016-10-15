@@ -39,8 +39,8 @@ multivariate wavelet Whittle criterion.
 \references{
 E. Moulines, F. Roueff, M. S. Taqqu (2009) A wavelet whittle estimator of the memory parameter of a nonstationary Gaussian time series. \emph{Annals of statistics}, vol. 36, N. 4, pages 1925-1956
 
-S. Achard, I. Gannaz (2014)
-Multivariate wavelet Whittle estimation in long-range dependence. \emph{arXiv}, \code{http://arxiv.org/abs/1412.0391}
+S. Achard, I. Gannaz (2016)
+Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
 }
 \author{
 S. Achard and I. Gannaz
@@ -56,7 +56,7 @@ d <- c(0.4,0.2)
 J <- 9
 N <- 2^J
 
-resp <- varfima(N, d, cov_matrix=cov)
+resp <- fivarma(N, d, cov_matrix=cov)
 x <- resp$x
 long_run_cov <- resp$long_run_cov
 

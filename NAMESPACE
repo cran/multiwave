@@ -1,2 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("stats", "convolve", "fft", "optim", "rnorm")
+importFrom("stats", "convolve", "fft", "rnorm","nlm","optimize")

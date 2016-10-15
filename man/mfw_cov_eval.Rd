@@ -33,8 +33,8 @@ the periodogram, \eqn{\lambda_j = 2\pi j/N}{lambda_j = 2*pi*j/N}, \eqn{j} = 1,..
 \references{
 K. Shimotsu (2007) Gaussian semiparametric estimation of multivariate fractionally integrated processes \emph{Journal of Econometrics} Vol. 137, N. 2, pages 277-310.
 
-S. Achard, I. Gannaz (2014)
-Multivariate wavelet Whittle estimation in long-range dependence. \emph{arXiv}, \code{http://arxiv.org/abs/1412.0391}
+S. Achard, I. Gannaz (2016)
+Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
 }
 \author{
 S. Achard and I. Gannaz
@@ -51,7 +51,7 @@ d <- c(0.4,0.2)
 J <- 9
 N <- 2^J
 
-resp <- varfima(N, d, cov_matrix=cov)
+resp <- fivarma(N, d, cov_matrix=cov)
 x <- resp$x
 long_run_cov <- resp$long_run_cov
 

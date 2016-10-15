@@ -16,18 +16,19 @@ mww <- function(x,filter,LU=NULL){
 ##______________________________________________________________________________
 
 
-k <- 1
-my_method <- 'Brent'
-lower <- -10
-upper <- 10
-if(is.matrix(x)){ 
-	k <- dim(x)[2] 
-	my_method <- 'Nelder-Mead'
-	lower <- -Inf
-	upper <- Inf
+x <- as.matrix(x)
+k <- dim(x)[2]
+
+d_univ <- rep(0,k)
+for(ll in seq(1,k,1)){
+	d_univ[ll] <- optimize(f=function(d){mww_eval(d,x=x[,ll],filter=filter,LU=LU)},lower=-10,upper=10)$minimum
 }
 
-md <- optim(rep(0,k),mww_eval,x=x,filter=filter,LU=LU,method=my_method,lower=lower,upper=upper)$par
+md <- d_univ
+if(k>1){
+ md <- nlm(f=function(d){mww_eval(d,x=x,filter=filter,LU=LU)},d_univ)$estimate
+}
+
 mg <- mww_cov_eval(md,x,filter,LU)
 
 list(d=md,cov=mg)

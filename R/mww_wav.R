@@ -19,18 +19,18 @@ mww_wav <- function(xwav,index,psih,grid_K,LU=NULL){
 ##_________________________________________________________________________________
 
 
-k <- 1
-my_method<-'Brent'
-lower<- -10
-upper<-10
-if(is.matrix(xwav)){ 
-k <- dim(xwav)[2] 
-my_method='Nelder-Mead'
-lower<- -Inf
-upper<- Inf
+xwav <- as.matrix(xwav)
+k <- dim(xwav)[2]
+
+d_univ <- rep(0,k)
+for(ll in seq(1,k,1)){
+	d_univ[ll] <- optimize(f=function(d){mww_wav_eval(d,xwav=xwav[,ll], index=index,LU=LU)},lower=-10,upper=10)$minimum
+}
+md <- d_univ
+if(k>1){
+ md <- nlm(f=function(d){mww_wav_eval(d,xwav=xwav,index=index,LU=LU)},d_univ)$estimate
 }
 
-md <- optim(rep(0,k),mww_wav_eval,xwav=xwav,index=index,LU=LU,method=my_method,lower=lower,upper=upper)$par
 mg <- mww_wav_cov_eval(md,xwav,index,psih,grid_K,LU)
 
 list(d=md,cov=mg)

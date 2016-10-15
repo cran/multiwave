@@ -27,8 +27,9 @@ vector of long-memory parameters.
 value of function K as a matrix. 
 }
 \references{
-S. Achard, I. Gannaz (2014)
-Multivariate wavelet Whittle estimation in long-range dependence. \emph{arXiv}, \code{http://arxiv.org/abs/1412.0391}
+S. Achard, I. Gannaz (2016)
+Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
+
 }
 \author{S. Achard and I. Gannaz
 }

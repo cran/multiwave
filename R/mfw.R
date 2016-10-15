@@ -13,18 +13,18 @@ mfw <- function(x,m){
 ##					Achard & Gannaz (2014)
 ##__________________________________________________________________________________
 
-k <- 1
-my_method<-'Brent'
-lower<- -10
-upper<-10
-if(is.matrix(x)){ 
+x <- as.matrix(x)
 k <- dim(x)[2] 
-my_method='Nelder-Mead'
-lower<- -Inf
-upper<- Inf
+
+d_univ <- rep(0,k)
+for(l in seq(1,k,1)){
+	d_univ[l] <- optimize(f=function(d){mfw_eval(d,x=x[,l],m=m)},lower=-10,upper=10)$minimum
+}
+md <- d_univ
+if(k>1){
+ md <- nlm(f=function(d){mfw_eval(d,x=x,m=m)},d_univ)$estimate
 }
 
-md <- optim(rep(0,k),mfw_eval,x=x,m=m,method=my_method,lower=lower,upper=upper)$par
 mg <- mfw_cov_eval(md,x,m)
 
 list(d=md,cov=mg)
