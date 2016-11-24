@@ -47,7 +47,7 @@ xwav <- new_xwav
 index <- c(0,index)
 
 ## Computation of psih for the computation of K in the paper
-res_psi <- psi_hat_exact(filter,Jmax)
+res_psi <- psi_hat_exact(filter,10)
 psih <- res_psi$psih
 grid_K <- res_psi$grid
 

@@ -7,11 +7,11 @@ discrete Fourier transform of the wavelet
 Computes the discrete Fourier transform of the wavelet associated to the given filter using \code{scaling_function}. The length of the Fourier transform is equal to the length of the grid where the wavelet is evaluated.
 }
 \usage{
-psi_hat_exact(filter,J)
+psi_hat_exact(filter,J=10)
 }
 \arguments{
   \item{filter}{wavelet filter as obtained with \code{scaling_filter}.}
-  \item{J}{value of the largest scale.	}
+  \item{J}{ 2^J corresponds to the size of the grid for the discretisation of the wavelet. The default value is set to 10.	}
 
 }
 \value{

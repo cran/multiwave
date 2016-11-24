@@ -14,7 +14,7 @@ varma(N, k = 1, VAR = NULL, VMA = NULL, cov_matrix = diag(k), innov=NULL)
 number of time points.
 }
   \item{k}{
-dimension of the vectorial ARMA (optional, default is univariate)
+dimension of the vector ARMA (optional, default is univariate)
 }
   \item{VAR}{
 array of VAR coefficient matrices (optional).

@@ -100,7 +100,7 @@ x <- as.matrix(x,dim=c(N,k))
      index <- c(0,index)
 
 ##### Compute the wavelet functions 
-res_psi <- psi_hat_exact(filter,Jmax)
+res_psi <- psi_hat_exact(filter,10)
 psih<-res_psi$psih
 grid<-res_psi$grid
 

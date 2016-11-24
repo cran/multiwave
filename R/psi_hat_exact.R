@@ -1,4 +1,4 @@
-psi_hat_exact<-function(filter,J){
+psi_hat_exact<-function(filter,J=10){
 
 ## Computes the discrete Fourier transform of the wavelet associated to 
 ## the given filter

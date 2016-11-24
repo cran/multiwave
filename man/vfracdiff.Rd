@@ -1,10 +1,10 @@
 \name{vfracdiff}
 \alias{vfracdiff}
 \title{
-simulation of vectorial fractional differencing process
+simulation of vector fractional differencing process
 }
 \description{
-Given a vectorial process \code{x} and a vector of long memory parameters \code{d}, this function is producing the corresponding fractional differencing process. 
+Given a vector process \code{x} and a vector of long memory parameters \code{d}, this function is producing the corresponding fractional differencing process. 
 }
 \usage{
 vfracdiff(x, d)
@@ -25,7 +25,7 @@ Given a process \code{x}, this function applied a fractional difference procedur
 where \code{L} is the lag operator.
 }
 \value{
-vectorial fractional differencing of \code{x}.
+vector fractional differencing of \code{x}.
 }
 \references{
 S. Achard, I. Gannaz (2016)
