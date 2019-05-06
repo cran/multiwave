@@ -38,7 +38,7 @@ H <- sqrt(2)*H
 	D <- diag(res_eigen$values)
 
 j <- 1
-while((abs(D[j,j]-1) >= 1.0e-5)&(j<N)){
+while(((abs(D[j,j])-1) >= 1.0e-5)&(j<N)){
     j <- j+1
 }
 phi <- V[,j]

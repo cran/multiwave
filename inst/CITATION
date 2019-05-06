@@ -1,0 +1,17 @@
+bibentry(bibtype = "Article",
+  title        = "Wavelet-Based and {F}ourier-Based Multivariate {W}hittle Estimation: {multiwave}",
+  author       = c(person(given = "Sophie",
+                          family = "Achard",
+                          email = "sophie.achard@gipsa-lab.fr"),
+                   person(given = "Ir{\\`e}ne",
+                          family = "Gannaz")),
+  journal      = "Journal of Statistical Software",
+  year         = "2019",
+  volume       = "89",
+  number       = "6",
+  pages        = "1--31",
+  doi          = "10.18637/jss.v089.i06",
+
+  header       = "To cite multiwave in publications use:"
+)
+

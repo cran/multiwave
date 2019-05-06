@@ -25,7 +25,7 @@ psi <- res$psi
 L <- length(psi)
 psi <- psi/sqrt(2^J)
 
-Nfft <- 2^round(log(L)/log(2))
+Nfft <- 2^ceiling(log(L)/log(2))
 Te <- (length(filter)-1)*2^Jmax ## support-size
 psi <- c(psi,rep(0,(Nfft-L)))
 psih <- fft(psi)/sqrt(pi*Te)

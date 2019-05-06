@@ -56,7 +56,7 @@ Jmax <- length(index)-1
     g  <- Re(g);    
  
     ## criterion
-    r <- log(det(g)) - 2*sum(d)*log(2)*sum(vect)/n
+    r <- determinant(g,logarithm=T)$modulus[1] - 2*sum(d)*log(2)*sum(vect)/n
 
 return(r)
 }

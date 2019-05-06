@@ -42,6 +42,10 @@ vector containing the largest index of each
 \references{
 S. Achard, I. Gannaz (2016)
 Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
+
+S. Achard, I Gannaz (2019)
+Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
+
 }
 \author{
 S. Achard and I. Gannaz
