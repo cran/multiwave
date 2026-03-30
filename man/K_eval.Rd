@@ -4,7 +4,7 @@
 Evaluation of function \eqn{K}
 }
 \description{
-Computes the function \eqn{K} as defined in (Achard and Gannaz 2014).
+Computes the function \eqn{K} as defined in (Achard and Gannaz 2014) and in (Achard and Gannaz 2024).
 }
 \usage{
 K_eval(psi_hat,u,d)
@@ -32,6 +32,8 @@ Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal 
 
 S. Achard, I Gannaz (2019)
 Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
+
+S. Achard, I. Gannaz (2024). Local Whittle estimation with (quasi-)analytic wavelets. \emph{Journal of Time Series Analysis}, Vol 45, pp 421-443.
 
 }
 \author{S. Achard and I. Gannaz

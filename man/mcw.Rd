@@ -1,30 +1,26 @@
-\name{mww_eval}
-\alias{mww_eval}
-
+\name{mcw}
+\alias{mcw}
 \title{
-Evaluation of multivariate real wavelet Whittle estimation
+Multivariate complex (or real) wavelet Whittle estimation
 }
 \description{
-Evaluates the multivariate real wavelet Whittle criterion at a given long-memory parameter vector \code{d} using \code{DWTexact} for the wavelet decomposition.
+Computes the multivariate complex (or real) wavelet Whittle estimation for the long-memory parameter vector \code{d} and the long-run covariance matrix, using \code{DWTcomplex} for the wavelet decomposition. 
 }
 \usage{
-mww_eval(d, x, filter, LU = NULL)
+mcw(x, filter_complex, LU = NULL, J=10)
 }
 \arguments{
-  \item{d}{vector of long-memory parameters (dimension should match dimension of x).
-}
   \item{x}{
 data (matrix with time in rows and variables in columns).
 }
-  \item{filter}{
-	wavelet filter as obtain with \code{scaling_filter}.
+  \item{filter_complex}{
+	wavelet filter as obtain with \code{scaling_filter} for a real wavelet and \code{hwlet} for a complex wavelet.
 }
   \item{LU}{
 	bivariate vector (optional) containing 
 			\code{L}, the lowest resolution in wavelet decomposition
-               	\code{U}, the maximal resolution in wavelet decomposition.
-					(Default values are set to \code{L}=2, and \code{U=Jmax}.)
-}
+             	\code{U}, the maximal resolution in wavelet decomposition. (Default values are set to \code{L}=3 if Jmax>3, and \code{U=Jmax}.)}
+             	  \item{J}{ 2^J corresponds to the size of the grid for the discretisation of the wavelet. The default value is set to 10.	}
 }
 \details{
 \code{L} is fixing the lower limit of wavelet scales. \code{L} can be increased to avoid finest frequencies that can be corrupted by the presence of high frequency phenomena.
@@ -32,23 +28,23 @@ data (matrix with time in rows and variables in columns).
 \code{U} is fixing the upper limit of wavelet scales. \code{U} can be decreased when highest frequencies have to be discarded. 
 }
 \value{
-multivariate wavelet Whittle criterion. 
+\item{d}{estimation of vector of long-memory parameters.}
+\item{cov}{estimation of long-run covariance matrix.}
 }
 \references{
-E. Moulines, F. Roueff, M. S. Taqqu (2009) A wavelet whittle estimator of the memory parameter of a nonstationary Gaussian time series. \emph{Annals of statistics}, vol. 36, N. 4, pages 1925-1956
-
 S. Achard, I. Gannaz (2016)
 Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
 
 S. Achard, I Gannaz (2019)
 Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
 
+S. Achard, I. Gannaz (2024). Local Whittle estimation with (quasi-)analytic wavelets. \emph{Journal of Time Series Analysis}, Vol 45, pp 421-443.
 }
 \author{
 S. Achard and I. Gannaz
 }
 \seealso{
-\code{\link{mww}}, \code{\link{mww_cov_eval}},\code{\link{mww_wav}},\code{\link{mww_wav_eval}},\code{\link{mww_wav_cov_eval}}
+\code{\link{mcw_wav}},\code{\link{mcw_wav_eval}},\code{\link{mcw_wav_cov_eval}}
 }
 \examples{
 ### Simulation of ARFIMA(0,d,0)
@@ -70,12 +66,10 @@ alpha <- res_filter$alpha
 
 LU <- c(2,11)
 
-res_mww <- mww_eval(d,x,filter,LU)
-k <- length(d)
-res_d <- optim(rep(0,k),mww_eval,x=x,filter=filter,
-	  	        LU=LU,method='Nelder-Mead',lower=-Inf,upper=Inf)$par
+res_mww <- mww(x,filter,LU)
 
 }
+
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ts}

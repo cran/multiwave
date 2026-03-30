@@ -1,16 +1,15 @@
-\name{mww_wav_eval}
-\alias{mww_wav_eval}
+\name{mcw_wav_eval}
+\alias{mcw_wav_eval}
 
 \title{
 Multivariate real wavelet Whittle estimation for data as wavelet coefficients
 }
 \description{
-Evaluates the multivariate real wavelet Whittle objective function at a given long-memory parameter vector \code{d} for the already wavelet decomposed data.
+Evaluates the multivariate complex (or real) wavelet Whittle objective function at a given long-memory parameter vector \code{d} for the already wavelet decomposed data.
 }
 \usage{
-mww_wav_eval(d, xwav, index, LU = NULL)
+mcw_wav_eval(d, xwav, index, LU = NULL)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{d}{vector of long-memory parameters (dimension should match dimension of x).
 }
@@ -37,13 +36,13 @@ vector containing the largest index of each
 multivariate wavelet Whittle criterion.
 }
 \references{
-E. Moulines, F. Roueff, M. S. Taqqu (2009) A wavelet whittle estimator of the memory parameter of a nonstationary Gaussian time series. \emph{Annals of statistics}, vol. 36, N. 4, pages 1925-1956
-
 S. Achard, I. Gannaz (2016)
 Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
 
 S. Achard, I Gannaz (2019)
 Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
+
+S. Achard, I. Gannaz (2024). Local Whittle estimation with (quasi-)analytic wavelets. \emph{Journal of Time Series Analysis}, Vol 45, pp 421-443.
 
 
 }
@@ -51,7 +50,7 @@ Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emp
 S. Achard and I. Gannaz
 }
 \seealso{
-\code{\link{mww}}, \code{\link{mww_cov_eval}},\code{\link{mww_wav}},\code{\link{mww_eval}},\code{\link{mww_wav_cov_eval}}
+\code{\link{mcw}},\code{\link{mcw_wav}},\code{\link{mcw_wav_cov_eval}}
 }
 \examples{
 ### Simulation of ARFIMA(0,d,0)

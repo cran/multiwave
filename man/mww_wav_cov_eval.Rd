@@ -1,10 +1,10 @@
 \name{mww_wav_cov_eval}
 \alias{mww_wav_cov_eval}
 \title{
-multivariate wavelet Whittle estimation of the long-run covariance matrix
+Multivariate real wavelet Whittle estimation of the long-run covariance matrix
 }
 \description{
-Computes the multivariate wavelet Whittle estimation of the long-run covariance matrix given the long-memory parameter  vector \code{d} for the already wavelet decomposed data.
+Computes the multivariate real wavelet Whittle estimation of the long-run covariance matrix given the long-memory parameter  vector \code{d} for the already wavelet decomposed data.
 }
 \usage{
 mww_wav_cov_eval(d, xwav, index,psih,grid_K, LU)

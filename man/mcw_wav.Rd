@@ -1,19 +1,15 @@
-\name{mww_wav_eval}
-\alias{mww_wav_eval}
-
+\name{mcw_wav}
+\alias{mcw_wav}
 \title{
-Multivariate real wavelet Whittle estimation for data as wavelet coefficients
+Multivariate complex (or real) wavelet Whittle estimation for data as wavelet coefficients
 }
 \description{
-Evaluates the multivariate real wavelet Whittle objective function at a given long-memory parameter vector \code{d} for the already wavelet decomposed data.
+Computes the multivariate complex (or real) wavelet Whittle estimation of the long-memory parameter vector \code{d} and the long-run covariance matrix for the already wavelet decomposed data.
 }
 \usage{
-mww_wav_eval(d, xwav, index, LU = NULL)
+mcw_wav(xwav, index, psih, grid_K, LU = NULL)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{d}{vector of long-memory parameters (dimension should match dimension of x).
-}
   \item{xwav}{
 wavelet coefficients matrix (with scales in rows and variables in columns).
 }
@@ -21,12 +17,14 @@ wavelet coefficients matrix (with scales in rows and variables in columns).
 vector containing the largest index of each
 			band, i.e. for \eqn{j>1} the wavelet coefficients of scale \eqn{j} are \eqn{\code{dwt}(k)} for \eqn{k \in [\code{indmaxband}(j-1)+1,\code{indmaxband}(j)]} and for  \eqn{j=1},  \eqn{\code{dwt}(k)} for \eqn{k \in [1,\code{indmaxband}(1)]}.
 }
-  \item{LU}{
+\item{psih}{the Fourier transform of the wavelet mother at values \code{grid_K}.}
+\item{grid_K}{the grid for the approximation of the integral in K.}
+ \item{LU}{
 	bivariate vector (optional) containing 
 			\code{L}, the lowest resolution in wavelet decomposition
-               	\code{U}, the maximal resolution in wavelet decomposition.
-				 (Default values are set to \code{L}=1, and \code{U=Jmax}.)
+               	\code{U}, the maximal resolution in wavelet decomposition. (Default values are set to \code{L}=1, and \code{U=Jmax}.)
 }
+
 }
 \details{
 \code{L} is fixing the lower limit of wavelet scales. \code{L} can be increased to avoid finest frequencies that can be corrupted by the presence of high frequency phenomena.
@@ -34,11 +32,10 @@ vector containing the largest index of each
 \code{U} is fixing the upper limit of wavelet scales. \code{U} can be decreased when highest frequencies have to be discarded. 
 }
 \value{
-multivariate wavelet Whittle criterion.
+\item{d}{estimation of the vector of long-memory parameters.}
+\item{cov}{estimation of the long-run covariance matrix.}
 }
 \references{
-E. Moulines, F. Roueff, M. S. Taqqu (2009) A wavelet whittle estimator of the memory parameter of a nonstationary Gaussian time series. \emph{Annals of statistics}, vol. 36, N. 4, pages 1925-1956
-
 S. Achard, I. Gannaz (2016)
 Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
 
@@ -46,12 +43,13 @@ S. Achard, I Gannaz (2019)
 Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
 
 
+S. Achard, I. Gannaz (2024). Local Whittle estimation with (quasi-)analytic wavelets. \emph{Journal of Time Series Analysis}, Vol 45, pp 421-443.
 }
 \author{
 S. Achard and I. Gannaz
 }
 \seealso{
-\code{\link{mww}}, \code{\link{mww_cov_eval}},\code{\link{mww_wav}},\code{\link{mww_eval}},\code{\link{mww_wav_cov_eval}}
+\code{\link{mcw}},\code{\link{mcw_wav_eval}},\code{\link{mcw_wav_cov_eval}}
 }
 \examples{
 ### Simulation of ARFIMA(0,d,0)
@@ -101,9 +99,14 @@ x <- as.matrix(x,dim=c(N,k))
      xwav <- new_xwav
      index <- c(0,index)
 
-res_mww <- mww_wav_eval(d,xwav,index,LU)
-res_d <- optim(rep(0,k),mww_wav_eval,xwav=xwav,index=index,LU=LU,
-          method='Nelder-Mead',lower=-Inf,upper=Inf)$par
+##### Compute the wavelet functions 
+res_psi <- psi_hat_exact(filter,10)
+psih <- res_psi$psih
+grid <- res_psi$grid
+
+res_mww <- mww_wav(xwav,index, psih, grid,LU)
+
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -2,10 +2,10 @@
 \alias{mww_wav}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-multivariate wavelet Whittle estimation for data as wavelet coefficients
+Multivariate real wavelet Whittle estimation for data as wavelet coefficients
 }
 \description{
-Computes the multivariate wavelet Whittle estimation of the long-memory parameter  vector \code{d} and the long-run covariance matrix for the already wavelet decomposed data.
+Computes the multivariate real wavelet Whittle estimation of the long-memory parameter  vector \code{d} and the long-run covariance matrix for the already wavelet decomposed data.
 }
 \usage{
 mww_wav(xwav, index, psih, grid_K, LU = NULL)

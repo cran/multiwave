@@ -1,23 +1,24 @@
 DWTexact <- function(x,filter){
 
-## Computes the scaling function and the wavelet function (for compactly supported wavelet) using the
-## cascade algorithm on the grid of dyadic integer $2^{-\text{J}}$ 
+## Computes the discrete wavelet decomposition of a signal x
+## (for compactly supported wavelet) using the
+## cascade algorithm on the grid of dyadic integer $2^{-\text{J}}$
 ##
-## 	INPUT	x		Vector of signal values to 
+## 	INPUT	x		Vector of signal values to
 ##		filter  	Filter of the wavelet transform
 ##
 ## 	OUTPUT  dwt		Vector of wavelet coeffcients
 ##         	indmaxband 	Vector containing the maximal index of wavelet coefficients at each scale
 ##		Jmax		Maximal scale
 ##
-##					based on the paper of Fay, Moulines, Roueff, Taqqu, 2009
+##					based on the paper of Fay, Moulines, Roueff & Taqqu (2009)
 ##                                      Achard & Gannaz (2014)
 ##________________________________________________________________________________________________
 
 n <- length(x)
 N <- length(filter)
-h<-filter
-g<-rev(filter*(-1)^(0:(N-1)))
+h <- filter
+g <- rev(filter*(-1)^(0:(N-1)))
 
 tmp <- compute_nj(n,N)
 nscale <- tmp$nj

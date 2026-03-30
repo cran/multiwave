@@ -1,10 +1,10 @@
 \name{mww}
 \alias{mww}
 \title{
-multivariate wavelet Whittle estimation
+Multivariate real wavelet Whittle estimation
 }
 \description{
-Computes the multivariate wavelet Whittle estimation for the long-memory parameter  vector \code{d} and the long-run covariance matrix, using \code{DWTexact} for the wavelet decomposition. 
+Computes the multivariate real wavelet Whittle estimation for the long-memory parameter vector \code{d} and the long-run covariance matrix, using \code{DWTexact} for the wavelet decomposition. 
 }
 \usage{
 mww(x, filter, LU = NULL)
@@ -19,7 +19,7 @@ data (matrix with time in rows and variables in columns).
   \item{LU}{
 	bivariate vector (optional) containing 
 			\code{L}, the lowest resolution in wavelet decomposition
-             	\code{U}, the maximal resolution in wavelet decomposition. (Default values are set to \code{L}=1, and \code{U=Jmax}.)
+             	\code{U}, the maximal resolution in wavelet decomposition. (Default values are set to \code{L}=2 if Jmax>2, and \code{U=Jmax}.)
 }
 }
 \details{

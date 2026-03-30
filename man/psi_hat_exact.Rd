@@ -1,10 +1,10 @@
 \name{psi_hat_exact}
 \alias{psi_hat_exact}
 \title{
-discrete Fourier transform of the wavelet
+Discrete Fourier transform of a real wavelet
 }
 \description{
-Computes the discrete Fourier transform of the wavelet associated to the given filter using \code{scaling_function}. The length of the Fourier transform is equal to the length of the grid where the wavelet is evaluated.
+Computes the discrete Fourier transform of the real wavelet associated to the given filter using \code{scaling_function}. The length of the Fourier transform is equal to the length of the grid where the wavelet is evaluated.
 }
 \usage{
 psi_hat_exact(filter,J=10)
@@ -15,7 +15,8 @@ psi_hat_exact(filter,J=10)
 
 }
 \value{
-\item{psih}{Values of the discrete Fourier transform of the wavelet.}
+\item{phih}{Values of the discrete Fourier transform of the scaling wavelet.}
+\item{psih}{Values of the discrete Fourier transform of the mother wavelet.}
 \item{grid}{Frequencies where the Fourier transform is evaluated.}
 }
 \references{

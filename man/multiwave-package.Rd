@@ -6,13 +6,13 @@
 Estimation of multivariate long-memory models parameters: memory parameters and long-run covariance matrix (also called fractal connectivity).
 }
 \description{
-This package computes an estimation of the long-memory parameters and the long-run covariance matrix using a multivariate model (Lobato, 1999; Shimotsu 2007). Two semi-parametric methods are implemented: a Fourier based approach (Shimotsu 2007) and a wavelet based approach (Achard and Gannaz 2014).
+This package computes an estimation of the long-memory parameters and the long-run covariance matrix using a multivariate model (Lobato, 1999; Shimotsu 2007). Two semi-parametric methods are implemented: a Fourier based approach (Shimotsu 2007) and a wavelet based approach (Achard and Gannaz 2014; Achard and Gannaz (2024) <doi:10.1111/jtsa.12719>). Real and complex wavelets are implemented.
 }
 \details{
 \tabular{ll}{
 Package: \tab multiwave\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 2.0\cr
 Date: \tab 2015-09-17\cr
 License: \tab GPL (>= 2)\cr
 }
@@ -25,11 +25,12 @@ Maintainer: Sophie Achard <sophie.achard@gipsa-lab.fr>, Irene Gannaz <irene.gann
 }
 \references{
 S. Achard, I. Gannaz (2016)
-Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512.  \code{http://arxiv.org/abs/1412.0391}.
+Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512. 
 
 S. Achard, I Gannaz (2019)
 Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
 
+S. Achard, I. Gannaz (2024). Local Whittle estimation with (quasi-)analytic wavelets. Journal of Time Series Analysis, Vol 45, pp 421-443. 
 }
 \keyword{package}
 \examples{

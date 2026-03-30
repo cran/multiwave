@@ -1,19 +1,21 @@
-\name{DWTexact}
-\alias{DWTexact}
+\name{DWTcomplex}
+\alias{DWTcomplex}
 \title{
-Exact discrete wavelet decomposition 
+Exact discrete wavelet decomposition with common-factor wavelets
 }
 \description{
 	Computes the discrete wavelet transform of the data using the pyramidal algorithm.
 }
 \usage{
-DWTexact(x, filter)
+DWTcomplex(x, filter, real)
 }
 \arguments{
   \item{x}{
  vector of raw data
 }
-  \item{filter}{Quadrature mirror filter (also called scaling filter, as returned by the \code{scaling_filter} function)
+  \item{filter}{Common-factor wavelet filters, as returned by the \code{hwlet} function, or real wavelet filters, as returned by the \code{sclaing_filter} function.}
+   \item{real}{
+Precise if the filter is a real filter (obtained with \code{scaling_filter}) or a complex filter (obtained with \code{hwlet}). The default value is FALSE
 }
 }
 \value{
@@ -23,30 +25,21 @@ DWTexact(x, filter)
 \item{Jmax}{largest available scale index (=length of \code{indmaxband}).}
 }
 \references{
-G. Fay, E. Moulines, F. Roueff, M. S. Taqqu (2009) 
-Estimators of long-memory: Fourier versus wavelets. \emph{Journal of Econometrics}, vol. 151, N. 2, pages 159-177.
+S. Achard, M. Clausel, I. Gannaz, F. Roueff (2020). New results on approximate Hilbert pairs of wavelet filters with common factor structure. \emph{Applied and Computational Harmonic Analysis}, Vol 49, N.3, pp 1025-1045.
 
-S. Achard, I. Gannaz (2016)
-Multivariate wavelet Whittle estimation in long-range dependence. \emph{Journal of Time Series Analysis}, Vol 37, N. 4, pages 476-512. 
-
-S. Achard, I Gannaz (2019)
-Wavelet-Based and Fourier-Based Multivariate Whittle Estimation: multiwave. \emph{Journal of Statistical Software}, Vol 89, N. 6, pages 1-31. 
-
-
+S. Achard, I. Gannaz (2024). Local Whittle estimation with (quasi-)analytic wavelets. \emph{Journal of Time Series Analysis}, Vol 45, pp 421-443.
 }
 \author{S. Achard and I. Gannaz
 }
 \seealso{
-\code{\link{scaling_filter}}
+\code{\link{hwlet}}
 }
-\note{This function was rewritten from an original matlab version by Fay et al. (2009)}
 \examples{
-res_filter <- scaling_filter('Daubechies',8);
-filter <- res_filter$h
+filter_complex <- hwlet(M=4,L=4,type='const')
 u <- rnorm(2^10,0,1)
 x <- vfracdiff(u,d=0.2)
 
-	resw <- DWTexact(x,filter)
+	resw <- DWTcomplex(x,filter_complex)
 		xwav <- resw$dwt
 		index <- resw$indmaxband
 		Jmax <- resw$Jmax

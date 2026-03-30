@@ -1,21 +1,21 @@
 mww_eval<-function(d,x,filter,LU=NULL){
 
-## mww_eval.m computes the multivariate Wavelet Whittle criterion 
-## for the estimation of the long-memory parameter at value d, with exact 
+## mww_eval.m computes the multivariate Wavelet Whittle criterion
+## for the estimation of the long-memory parameter at value d, with exact
 ## DWT of Fay et al (2009).
 ##
 ## If LU contains different values of lower and upper scales, the minimum
 ## criterion is returned.
-## 
+##
 ## 	INPUT	d	kx1 long-range dependence parameters
 ##              x	Data (nxk vector)
 ##		filter	Wavelet filter
-##              LU	Bivariate vector (optional) containing 
+##              LU	Bivariate vector (optional) containing
 ##			L, the lowest resolution in wavelet decomposition
 ##               	U, the maximal resolution in wavelet decomposition
 ##
 ##	OUTPUT		Wavelet Whittle criterion
-##				
+##
 ##                                           Achard & Gannaz (2014)
 ##______________________________________________________________________
 
@@ -33,7 +33,7 @@ x <- as.matrix(x,dim=c(N,k))
 xwav <- matrix(0,N,k)
 for(j in 1:k){
 	xx <- x[,j]
-	   
+
 	resw <- DWTexact(xx,filter)
 	xwav_temp <- resw$dwt
 	index <- resw$indmaxband
@@ -49,8 +49,11 @@ xwav <- new_xwav
 index <- c(0,index)
 
 ## Wavelet scales
+if (Jmax<2){
+  stop("Unsufficient length of time series")
+}
 if(is.null(LU)==TRUE){
-	LU <- c(1,Jmax)
+	LU <- c(min(2,Jmax-1),Jmax)
 }
 L <- max(LU[1],1)
 U <- min(LU[2],Jmax) ## in order to force to be in the correct interval of scales
